@@ -1,18 +1,49 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
-import java.awt.GridBagLayout;
-
-
-import javax.swing.JButton;
-
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import javax.swing.JTextField;
 
 public class DominoPicerija {
 	
+	static String fNosaukums;
 	
-	static void PicasPasutijums(){
+	static void ierakstit(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards){
+		
+		fNosaukums = JOptionPane.showInputDialog("("+Vards+") Èeks");
+		try{
+			FileWriter fw = new FileWriter(fNosaukums,true);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println(PicasVeiduUzkratuve+"\nPersonas Telefona nummurs: "+TelefonaNum+"\nPersonas vârds un uzvârds"+Vards+" "+Uzvards);
+			pw.close();
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "Radâs kïûda ierakstot!","Kïûda",JOptionPane.ERROR_MESSAGE);
+		}
+		
+	}
+	
+	static void apskatit(){
+		String teksts, str = "";
+		try{
+			FileReader fr = new FileReader(fNosaukums);
+			BufferedReader br = new BufferedReader(fr);
+			while((teksts=br.readLine())!=null){
+				str+=teksts+"\n";
+			}
+			br.close();
+			JOptionPane.showMessageDialog(null, str,"Saturs",JOptionPane.INFORMATION_MESSAGE);
+
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "Kïûda apskatot failu!","Kïûda",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
+	public static void PicasPasutijums(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards){
 		double cena=0;
 		int sk=0;
 		String []izmers={"Lielâ","Videjâ","Mazâ"};
@@ -25,7 +56,7 @@ public class DominoPicerija {
 		 do{
 		 String[] PicasVeidaIzvele = {"Pica ar sieru","Pica ar annanasiem","Pepperoni","Margarita","Vezuva","Veìitârâ","Pica ar ðíiòíi","Pârlocîtâ"};
 		 String PicasVeids =(String) JOptionPane.showInputDialog(null,"Izvçlieties "+skaititajs+". picas veidu: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,PicasVeidaIzvele,PicasVeidaIzvele[0]);
-		 String PicasVeiduUzkratuve = null;
+		
 		 String PicasIzmers = null;
 		
 		  
@@ -132,10 +163,7 @@ public class DominoPicerija {
 		 
 		 
 		
-		JTextField Adresse = new JTextField();
-		JTextField TelefonaNum = new JTextField();
-		JTextField Vards = new JTextField();
-		JTextField Uzvards = new JTextField();
+		
 
 	  Object [] Dati = {"Adresse: ",Adresse,"Telefona nummurs:",TelefonaNum,"Vards:",Vards,"Uzvârds:",Uzvards };
 
@@ -145,12 +173,15 @@ public class DominoPicerija {
 		
 		
 
-     
 	}
 
 	public static void main(String[] args) {
 		int metodesIndekss;
-	
+		String PicasVeiduUzkratuve = null;
+		JTextField Adresse = new JTextField();
+		JTextField TelefonaNum = new JTextField();
+		JTextField Vards = new JTextField();
+		JTextField Uzvards = new JTextField();
 		
 		String[] switchMetodes = {"Pasûtît picu","Apskatît picas komplektus","Apskatît èeku","Beigt darbu."};
 		
@@ -159,16 +190,18 @@ public class DominoPicerija {
 				
 				switch(metodesIndekss){
 				case 0:
-					PicasPasutijums();
+					 
+					PicasPasutijums(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards);
 					break;
 				case 1:
 					
 					break;
 				case 2:
-					
+					ierakstit(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards);
+					apskatit();
 					break;
 				case 3:
-					JOptionPane.showMessageDialog(null,"Jûs izgâjât no picerijas!");
+					JOptionPane.showMessageDialog(null,"Jûs izgâjât no picçrijas!");
 					break;
 				
 	}
