@@ -13,19 +13,42 @@ public class DominoPicerija {
 	
 	static void ierakstit(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards,int attalums){
 		
-		fNosaukums = JOptionPane.showInputDialog("("+Vards+") Èeks.txt");
+		if(PicasVeiduUzkratuve==null){
+			JOptionPane.showMessageDialog(null, "Jûms nav pasûtîjums!");
+		}else{
+		
+		double piegCena = 0;
+		fNosaukums = "Èeki";
 		try{
 			FileWriter fw = new FileWriter(fNosaukums,true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			String txt=PicasVeiduUzkratuve+"\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds"+Vards.getText()+" "+Uzvards.getText();
+			if(attalums<=5){
+				piegCena=1.10;
+		
+			}else if(attalums>5&&attalums<=10){
+				piegCena=1.60;
+				
+		}else if(attalums>10&&attalums<=15){
+				piegCena=2.30;
+				
+		}else if(attalums>15&&attalums<=20){
+				piegCena=5.10;
+				
+	}else if(attalums>20){
+				piegCena=7.25;
+				
+				
+	}
+			
+			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
 			
 			pw.println(txt);
 			pw.close();
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "Radâs kïûda veidojot èeku!","Kïûda",JOptionPane.ERROR_MESSAGE);
 		}
-		
+		}
 	}
 	
 	static void apskatit(){
@@ -56,7 +79,7 @@ public class DominoPicerija {
 		 String []izmers3={"Lielâ-8.59€","Videjâ-7.79€","Mazâ-6.99€"};
 		String []izmers4={"Lielâ-11.99€","Videjâ-10.99€","Mazâ-9.99€"};
 		String []izmers5={"Lielâ-8.69€","Videjâ-6.89€","Mazâ-5.59€"};
-		 String []izmers6={"Lielâ-8.99€","Videjâ=7.99€","Mazâ-6.99€"};
+		 String []izmers6={"Lielâ-8.99€","Videjâ-7.99€","Mazâ-6.99€"};
 		 String []izmers7={"Lielâ-8.99€","Videjâ-7.99€","Mazâ-6.99€"};
 		 String []izmers8={"Lielâ-8.99€","Videjâ-7.99€","Mazâ-6.99€"};
 		
@@ -72,18 +95,26 @@ public class DominoPicerija {
 	int PasutijumaVeids= JOptionPane.showOptionDialog(null, "Izvçlies darbîbu","Izvçle",0,3,null,PasutijumaOpcijas,PasutijumaOpcijas[0]);
 	
 	if(PasutijumaVeids==1){
-		attalums=Integer.parseInt(JOptionPane.showInputDialog(null,"Cik tâlu jûs dzîvojat?"));
+		attalums=Integer.parseInt(JOptionPane.showInputDialog(null,"Cik tâlu jûs dzîvojat?(km)"));
 		
-		if(attalums<=5)
+		if(attalums<=5){
 			cena+=1.10;
-		else if(attalums>5||attalums<=10)
+		JOptionPane.showMessageDialog(null,"Jûsu cena par pasûtijumu piegadi bûs 1.10€");
+		}else if(attalums>5&&attalums<=10){
 			cena+=1.60;
-		else if(attalums>10||attalums<=15)
+			JOptionPane.showMessageDialog(null,"Jûsu cena par pasûtijumu piegadi bûs 1.60€");
+	}else if(attalums>10&&attalums<=15){
 			cena+=2.30;
-		else if(attalums>15||attalums<=20)
+			JOptionPane.showMessageDialog(null,"Jûsu cena par pasûtijumu piegadi bûs 2.30€");
+	}else if(attalums>15&&attalums<=20){
 			cena+=5.10;
-		else if(attalums>20)
+			JOptionPane.showMessageDialog(null,"Jûsu cena par pasûtijumu piegadi bûs 5.10€");
+}else if(attalums>20){
 			cena+=7.25;
+			JOptionPane.showMessageDialog(null,"Jûsu cena par pasûtijumu piegadi bûs 7.25€");
+			
+}
+		
 	}
 	
 	
