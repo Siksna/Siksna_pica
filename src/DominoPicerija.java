@@ -14,16 +14,22 @@ public class DominoPicerija {
 	
 	static void PicasPasutijums(){
 		double cena=0;
+		int sk=0;
 		String []izmers={"Lielâ","Videjâ","Mazâ"};
 		
 	int pasutijumuSK = Integer.parseInt(JOptionPane.showInputDialog(null,"Cik picas vçlaties pasûtît?"));
-		 
+	double []cenuIevade=new double[pasutijumuSK];
+	int skaititajs=1;
+	
+	
 		 do{
 		 String[] PicasVeidaIzvele = {"Pica ar sieru","Pica ar annanasiem","Pepperoni","Margarita","Vezuva","Veìitârâ","Pica ar ðíiòíi","Pârlocîtâ"};
-		 String PicasVeids =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas veidu: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,PicasVeidaIzvele,PicasVeidaIzvele[0]);
+		 String PicasVeids =(String) JOptionPane.showInputDialog(null,"Izvçlieties "+skaititajs+". picas veidu: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,PicasVeidaIzvele,PicasVeidaIzvele[0]);
 		 String PicasVeiduUzkratuve = null;
-		 String PicasIzmers;
-		  PicasVeiduUzkratuve += PicasVeids+"\n";
+		 String PicasIzmers = null;
+		
+		  
+		  
 		 switch(PicasVeids){
 		 case "Pica ar sieru":
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers,izmers[0]);
@@ -116,34 +122,26 @@ public class DominoPicerija {
 			 break;
 			 
 		 }
-		 double []cenuIevade=new double[pasutijumuSK];
-		 cenuIevade+=cena;
+		 
+		 skaititajs++;
+		 
+		 cenuIevade[sk]+=cena;
+		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers+" "+cenuIevade[sk]+"EUR\n";
 		 pasutijumuSK--;
 	}while(pasutijumuSK!=0); 
 		 
 		 
-		 JPanel myPanel = new JPanel(new GridBagLayout());
-		JTextField Adresse = new JTextField(20);
-		JTextField TelefonaNum = new JTextField(20);
-		JTextField VardsUzv = new JTextField(20);
+		
+		JTextField Adresse = new JTextField();
+		JTextField TelefonaNum = new JTextField();
+		JTextField Vards = new JTextField();
+		JTextField Uzvards = new JTextField();
 
-	  
-
-	    myPanel.add(new JLabel("Jûsu telefona nummurs:"));
-	    myPanel.add(TelefonaNum);
-	    TelefonaNum.setBounds(10, 20, 50, 25);
-
-	    myPanel.add(new JLabel("Ievadiet savu adressi:"));
-	    myPanel.add(Adresse);
-	    Adresse.setBounds(10, 20, 50, 25);
-        
-	    myPanel.add(new JLabel("Ievadiet savu vârdu un uzvârdu:"));
-	    myPanel.add(VardsUzv);
-	    Adresse.setBounds(10, 20, 50, 25);
+	  Object [] Dati = {"Adresse: ",Adresse,"Telefona nummurs:",TelefonaNum,"Vards:",Vards,"Uzvârds:",Uzvards };
 
 	   
 
-	    JOptionPane.showInputDialog(myPanel);
+	    JOptionPane.showConfirmDialog(null,Dati,"Jautâjums",JOptionPane.OK_CANCEL_OPTION);
 		
 		
 
@@ -154,7 +152,7 @@ public class DominoPicerija {
 		int metodesIndekss;
 	
 		
-		String[] switchMetodes = {"Pasûtît picu","Apskatît picas sastâvdaïas","Apskatît èeku","Apskatît citus pircçjus rindâ","Beigt darbu."};
+		String[] switchMetodes = {"Pasûtît picu","Apskatît picas komplektus","Apskatît èeku","Beigt darbu."};
 		
 		do{
        metodesIndekss = (int) JOptionPane.showOptionDialog(null, "Izvçlies darbîbu","Izvçle",0,3,null,switchMetodes,switchMetodes[0]);
@@ -170,12 +168,10 @@ public class DominoPicerija {
 					
 					break;
 				case 3:
-					
+					JOptionPane.showMessageDialog(null,"Jûs izgâjât no picerijas!");
 					break;
-				case 4:
-					
-					break;
+				
 	}
-		}while(metodesIndekss!=4);
+		}while(metodesIndekss!=3);
 }
 }
