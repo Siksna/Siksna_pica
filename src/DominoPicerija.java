@@ -16,7 +16,7 @@ public class DominoPicerija {
 		
 		
 		double piegCena = 0;
-		fNosaukums = "Èeki";
+		fNosaukums = "("+Vards.getText()+" "+Uzvards.getText()+") Èeks";
 		try{
 			FileWriter fw = new FileWriter(fNosaukums,true);
 			PrintWriter pw = new PrintWriter(fw);
@@ -39,7 +39,7 @@ public class DominoPicerija {
 				
 	}
 			
-			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
+			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nKopçja cena par visu: "+cena+"\nKopçjâ cena par visu ar PVN: "+cena/100*79+"\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
 			
 			pw.println(txt);
 			pw.close();
@@ -66,7 +66,7 @@ public class DominoPicerija {
 	}
 	
 	
-	public static void PicasPasutijums(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards,int attalums, double cena){
+	public static void PicasPasutijums(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards,double cena){
 		
 		
 		
@@ -85,19 +85,8 @@ public class DominoPicerija {
 	double []cenuIevade=new double[pasutijumuSK];
 	int skaititajs=1;
 	
-	
-	
-	
-	
-	
-		
-	
-	
-	
-	
-	
 		 do{
-		 String[] PicasVeidaIzvele = {"Pica ar sieru-7.99€","Pica ar annanasiem-8.99€","Pepperoni-7.79€","Margarita-10.99€","Vezuva-6.89€","Veìitârâ-7.99€","Pica ar ðíiòíi-7.99€","Pârlocîtâ-7.99€"};
+		 String[] PicasVeidaIzvele = {"Pica ar sieru","Pica ar annanasiem","Pepperoni","Margarita","Vezuva","Veìitârâ","Pica ar ðíiòíi","Pârlocîtâ"};
 		 String PicasVeids =(String) JOptionPane.showInputDialog(null,"Izvçlieties "+skaititajs+". picas veidu: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,PicasVeidaIzvele,PicasVeidaIzvele[0]);
 		
 		 String PicasIzmers = null;
@@ -105,102 +94,102 @@ public class DominoPicerija {
 		  
 		  
 		 switch(PicasVeids){
-		 case "Pica ar sieru-7.99€":
+		 case "Pica ar sieru":
 			 
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers1,izmers1[1]);
 			
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-8.99€")
 			 cena+=8.99;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-7.99€")
 				 cena+=7.99;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-6.99€")
 				 cena+=6.99;
 			 break;
 			 
-		 case "Pica ar annanasiem-8.99€":
+		 case "Pica ar annanasiem":
 			
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers2,izmers2[1]);
 				
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-10.99€")
 			 cena+=10.99;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-8.99€")
 				 cena+=8.99;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-6.99€")
 				 cena+=6.99;
 			 break;
 			 
-		 case "Pepperoni-7.79€":
+		 case "Pepperoni":
 			
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers3,izmers3[1]);
 				
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-8.59€")
 			 cena+=8.59;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-7.79€")
 				 cena+=7.79;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-6.99€")
 				 cena+=6.99;
 			 
 			 break;
 			 
-		 case "Margarita-10.99€":
+		 case "Margarita":
 			 
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers4,izmers4[1]);
 				
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-11.99€")
 			 cena+=11.99;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-10.99€")
 				 cena+=10.99;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-9.99€")
 				 cena+=9.99; 
 			
 			 break;
 			 
-		 case "Vezuva-6.89€":
+		 case "Vezuva":
 			 
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers5,izmers5[1]);
 				
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-8.69€")
 			 cena+=8.69;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-6.89€")
 				 cena+=6.89;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-5.59€")
 				 cena+=5.59;
 			 break;
 			 
-		 case "Veìitârâ-7.99€":
+		 case "Veìitârâ":
 			
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers6,izmers6[1]);
 				
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-8.99€")
 			 cena+=8.99;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-7.99€")
 				 cena+=7.99;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-6.99€")
 				 cena+=6.99;
 			 break;
 			 
-		 case "Pica ar ðíiòíi-7.99€":
+		 case "Pica ar ðíiòíi":
 			
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers7,izmers7[1]);
 				
-			 if(PicasIzmers=="Lielâ")
+			 if(PicasIzmers=="Lielâ-8.99€")
 			 cena+=8.99;
-			 else if(PicasIzmers=="Vidçjâ")
+			 else if(PicasIzmers=="Videjâ-7.99€")
 				 cena+=7.99;
-			 else if(PicasIzmers=="Mazâ")
+			 else if(PicasIzmers=="Mazâ-6.99€")
 				 cena+=6.99;
 			 break;
 			 
-		 case "Pârlocîtâ-7.99€":
+		 case "Pârlocîtâ":
 			
 			 PicasIzmers =(String) JOptionPane.showInputDialog(null,"Izvçlieties picas izmçru: ","Informacija",JOptionPane.INFORMATION_MESSAGE,null,izmers8,izmers8[1]);
 				
-			 if(PicasIzmers=="Lielâ")
-			 cena+=8.99;
-			 else if(PicasIzmers=="Vidçjâ")
-				 cena+=7.99;
-			 else if(PicasIzmers=="Mazâ")
-				 cena+=6.99;
+			 if(PicasIzmers=="Lielâ-12.99€")
+			 cena+=12.99;
+			 else if(PicasIzmers=="Videjâ-10.49€")
+				 cena+=10.49;
+			 else if(PicasIzmers=="Mazâ-8.99€")
+				 cena+=8.99;
 			 break;
 			 
 		 }
@@ -208,19 +197,17 @@ public class DominoPicerija {
 		 skaititajs++;
 		 
 		 cenuIevade[sk]+=cena;
-		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers+" "+cenuIevade[sk]+"EUR\n";
+		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers;
 		 
+		 sk++;
 		 pasutijumuSK--;
 	}while(pasutijumuSK!=0); 
+		 PicasVeiduUzkratuve+=+cenuIevade[sk]+"EUR\n";
 		 
-		 
-		
+		JOptionPane.showMessageDialog(null,PicasVeiduUzkratuve);
 		
 
 	  Object [] Dati = {"Adresse: ",Adresse,"Telefona nummurs:",TelefonaNum,"Vards:",Vards,"Uzvârds:",Uzvards };
-
-	   
-
 	    JOptionPane.showConfirmDialog(null,Dati,"Jautâjums",JOptionPane.OK_CANCEL_OPTION);
 		
 	}
@@ -229,13 +216,13 @@ public class DominoPicerija {
 		double cena=0;
 		int attalums = 0;
 		int metodesIndekss;
-		String PicasVeiduUzkratuve = null;
+		String PicasVeiduUzkratuve=" ";
 		JTextField Adresse = new JTextField();
 		JTextField TelefonaNum = new JTextField();
 		JTextField Vards = new JTextField();
 		JTextField Uzvards = new JTextField();
 		
-		String[] switchMetodes = {"Pasûtît picu","Apskatît picas komplektus","Apskatît èeku","Beigt darbu."};
+		String[] switchMetodes = {"Pasûtît picu","Apskatît èeku","Beigt darbu."};
 		
 		do{
        metodesIndekss = (int) JOptionPane.showOptionDialog(null, "Izvçlies darbîbu","Izvçle",0,3,null,switchMetodes,switchMetodes[0]);
@@ -266,12 +253,10 @@ public class DominoPicerija {
 							
 				}
 					}
-					PicasPasutijums(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,attalums,cena);
+					PicasPasutijums(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,cena);
 					break;
-				case 1:
 					
-					break;
-				case 2:
+				case 1:
 					if(PicasVeiduUzkratuve==null){
 						JOptionPane.showMessageDialog(null, "Jûms nav pasûtîjums!");
 					}else{
@@ -279,11 +264,11 @@ public class DominoPicerija {
 					apskatit();
 					}
 					break;
-				case 3:
+				case 2:
 					JOptionPane.showMessageDialog(null,"Jûs izgâjât no picçrijas!");
 					break;
 				
 	}
-		}while(metodesIndekss!=3);
+		}while(metodesIndekss!=2);
 }
 }
