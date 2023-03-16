@@ -197,12 +197,12 @@ public class DominoPicerija {
 		 skaititajs++;
 		 
 		 cenuIevade[sk]+=cena;
-		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers;
+		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers+" "+cenuIevade[sk]+"EUR\n";
 		 
 		 sk++;
 		 pasutijumuSK--;
 	}while(pasutijumuSK!=0); 
-		 PicasVeiduUzkratuve+=+cenuIevade[sk]+"EUR\n";
+		 
 		 
 		JOptionPane.showMessageDialog(null,PicasVeiduUzkratuve);
 		
@@ -257,7 +257,7 @@ public class DominoPicerija {
 					break;
 					
 				case 1:
-					if(PicasVeiduUzkratuve==null){
+					if(PicasVeiduUzkratuve==" "){
 						JOptionPane.showMessageDialog(null, "Jûms nav pasûtîjums!");
 					}else{
 					ierakstit(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,attalums,cena);
