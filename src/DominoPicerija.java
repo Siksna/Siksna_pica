@@ -204,7 +204,7 @@ public class DominoPicerija {
 	}while(pasutijumuSK!=0); 
 		 
 		 
-		JOptionPane.showMessageDialog(null,PicasVeiduUzkratuve);
+		
 		
 
 	  Object [] Dati = {"Adresse: ",Adresse,"Telefona nummurs:",TelefonaNum,"Vards:",Vards,"Uzvârds:",Uzvards };
@@ -257,7 +257,7 @@ public class DominoPicerija {
 					break;
 					
 				case 1:
-					if(PicasVeiduUzkratuve==" "){
+					if(PicasVeiduUzkratuve==null){
 						JOptionPane.showMessageDialog(null, "Jûms nav pasûtîjums!");
 					}else{
 					ierakstit(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,attalums,cena);
