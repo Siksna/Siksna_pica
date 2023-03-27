@@ -12,7 +12,7 @@ public class DominoPicerija {
 	static String fNosaukums;
 	
 	static void ierakstit(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards,int attalums, double cena){
-		
+	
 		
 		
 		double piegCena = 0;
@@ -20,6 +20,7 @@ public class DominoPicerija {
 		try{
 			FileWriter fw = new FileWriter(fNosaukums,true);
 			PrintWriter pw = new PrintWriter(fw);
+			piegCena=0;
 			
 			if(attalums<=5){
 				piegCena=1.10;
@@ -39,7 +40,7 @@ public class DominoPicerija {
 				
 	}
 			
-			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nKopçja cena par visu: "+cena+"\nKopçjâ cena par visu ar PVN: "+cena/100*79+"\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
+			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nKopçja cena par visu: "+cena+"€\nKopçjâ cena par visu ar PVN: "+cena/100*79+"€\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
 			
 			pw.println(txt);
 			pw.close();
@@ -66,11 +67,8 @@ public class DominoPicerija {
 	}
 	
 	
-	public static void PicasPasutijums(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards,double cena){
+	 static  String PicasPasutijums(String PicasVeiduUzkratuve, JTextField Adresse, JTextField TelefonaNum, JTextField Vards, JTextField Uzvards,double cena){
 		
-		
-		
-		int sk=0;
 		
 		String []izmers1={"Lielâ-8.99€","Videjâ-7.99€","Mazâ-6.99€"};
 		 String []izmers2={"Lielâ-10.99€","Videjâ-8.99€","Mazâ-6.99€"};
@@ -82,7 +80,7 @@ public class DominoPicerija {
 		 String []izmers8={"Lielâ-8.99€","Videjâ-7.99€","Mazâ-6.99€"};
 		
 	int pasutijumuSK = Integer.parseInt(JOptionPane.showInputDialog(null,"Cik picas vçlaties pasûtît?"));
-	double []cenuIevade=new double[pasutijumuSK];
+	
 	int skaititajs=1;
 	
 		 do{
@@ -196,19 +194,21 @@ public class DominoPicerija {
 		 
 		 skaititajs++;
 		 
-		 cenuIevade[sk]+=cena;
-		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers;
+		
+		 PicasVeiduUzkratuve += PicasVeids+" "+PicasIzmers+"\n";
 		 
-		 sk++;
+		 
 		 pasutijumuSK--;
 	}while(pasutijumuSK!=0); 
-		 PicasVeiduUzkratuve+=+cenuIevade[sk]+"EUR\n";
+		
 		 
 		JOptionPane.showMessageDialog(null,PicasVeiduUzkratuve);
 		
 
 	  Object [] Dati = {"Adresse: ",Adresse,"Telefona nummurs:",TelefonaNum,"Vards:",Vards,"Uzvârds:",Uzvards };
+	  
 	    JOptionPane.showConfirmDialog(null,Dati,"Jautâjums",JOptionPane.OK_CANCEL_OPTION);
+		return PicasVeiduUzkratuve;
 		
 	}
 
@@ -218,7 +218,7 @@ public class DominoPicerija {
 		int metodesIndekss;
 		String PicasVeiduUzkratuve=" ";
 		JTextField Adresse = new JTextField();
-		JTextField TelefonaNum = new JTextField();
+		JTextField TelefonaNum = new JTextField(8);
 		JTextField Vards = new JTextField();
 		JTextField Uzvards = new JTextField();
 		
@@ -254,10 +254,12 @@ public class DominoPicerija {
 				}
 					}
 					PicasPasutijums(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,cena);
+					
+					JOptionPane.showMessageDialog(null,cena+" "+PicasVeiduUzkratuve);
 					break;
 					
 				case 1:
-					if(PicasVeiduUzkratuve==null){
+					if(cena==0){
 						JOptionPane.showMessageDialog(null, "Jûms nav pasûtîjums!");
 					}else{
 					ierakstit(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,attalums,cena);
