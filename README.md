@@ -1,4 +1,4 @@
-# Siksna_pica
+# Siksna_pica :pizza:
 Java picas projekts kurs versonets ar Git
 
 ![Pica](https://www.crustpizzaco.com/assets/theme/cpc/images/pizza-main.png)
