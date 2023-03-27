@@ -9,5 +9,4 @@ Java picas projekts kurs versonets ar Git
 - [x] Lokalais projekts izveidots GitHub krātuvē
 - [x] Izveidots Labojuma zars
 - [ ] Uzlabots darbs
-- [ ] Papildinat GitHub repo un iegūt to lokālais lietošanai
 - [ ] Piesaistits skolotajs
