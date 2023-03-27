@@ -39,7 +39,7 @@ public class DominoPicerija {
 				
 	}
 			
-			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nKopçja cena par visu: "+cena+"\nKopçjâ cena par visu ar PVN: "+cena/100*79+"\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
+			String txt=PicasVeiduUzkratuve+"\nCena par piegâdi: "+piegCena+"€\nKopçja cena par visu: "+cena+"€\nKopçjâ cena par visu ar PVN: "+cena/100*79+"€\nPersonas Telefona nummurs: "+TelefonaNum.getText()+"\nPersonas vârds un uzvârds: "+Vards.getText()+" "+Uzvards.getText();
 			
 			pw.println(txt);
 			pw.close();
@@ -257,7 +257,7 @@ public class DominoPicerija {
 					break;
 					
 				case 1:
-					if(PicasVeiduUzkratuve==null){
+					if(PicasVeiduUzkratuve==" "){
 						JOptionPane.showMessageDialog(null, "Jûms nav pasûtîjums!");
 					}else{
 					ierakstit(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,attalums,cena);
