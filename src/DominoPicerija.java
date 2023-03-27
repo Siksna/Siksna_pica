@@ -192,6 +192,8 @@ public class DominoPicerija {
 			 
 		 }
 		 
+		 
+		 
 		 skaititajs++;
 		 
 		
@@ -208,7 +210,7 @@ public class DominoPicerija {
 	  Object [] Dati = {"Adresse: ",Adresse,"Telefona nummurs:",TelefonaNum,"Vards:",Vards,"Uzvârds:",Uzvards };
 	  
 	    JOptionPane.showConfirmDialog(null,Dati,"Jautâjums",JOptionPane.OK_CANCEL_OPTION);
-		return PicasVeiduUzkratuve;
+		return PicasVeiduUzkratuve+"\n"+cena;
 		
 	}
 
@@ -229,6 +231,7 @@ public class DominoPicerija {
 				
 				switch(metodesIndekss){
 				case 0:
+					cena=0;
 					String [] PasutijumaOpcijas={"Uz vietas","Piegâde"};
 					int PasutijumaVeids= JOptionPane.showOptionDialog(null, "Izvçlies darbîbu","Izvçle",0,3,null,PasutijumaOpcijas,PasutijumaOpcijas[0]);
 					
