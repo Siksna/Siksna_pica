@@ -255,7 +255,6 @@ public class DominoPicerija {
 					}
 					PicasPasutijums(PicasVeiduUzkratuve,Adresse,TelefonaNum,Vards,Uzvards,cena);
 					
-					JOptionPane.showMessageDialog(null,cena+" "+PicasVeiduUzkratuve);
 					break;
 					
 				case 1:
